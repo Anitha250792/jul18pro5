@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simple Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Calculator</h1>
+        <form method="POST" class="calc-form">
+            <input type="text" name="num1" placeholder="Enter first number" required />
+            <input type="text" name="num2" placeholder="Enter second number" required />
+
+            <select name="operation" required>
+                <option value="" disabled selected>Select operation</option>
+                <option value="add">Add (+)</option>
+                <option value="subtract">Subtract (-)</option>
+                <option value="multiply">Multiply (×)</option>
+                <option value="divide">Divide (÷)</option>
+            </select>
+
+            <button type="submit">Calculate</button>
+        </form>
+
+        {% if result is not none %}
+            <div class="result">
+                Result: <strong>{{ result }}</strong>
+            </div>
+        {% elif error %}
+            <div class="error">
+                Error: <strong>{{ error }}</strong>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
